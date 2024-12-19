@@ -8,18 +8,18 @@ export class Team {
     }
 
 
-iterator() {
-    let index = 0;
-    return {
-        next: () => {
-            if(index < this.members.length){
-            return this.members[index++];
-            }
-            return {
-                value: undefined,
-                done: true,
+    [Symbol.iterator]() {
+        let index = 0;
+        return {
+            next: () => {
+                if(index < this.members.length){
+                return this.members[index++];
+                }
+                return {
+                    value: undefined,
+                    done: true,
+                }
             }
         }
-    }
 }
 }

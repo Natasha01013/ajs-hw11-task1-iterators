@@ -1,6 +1,6 @@
 import {Team} from '../iterator';
 
-test('chaking team', () => {
+test('chacking team with first next', () => {
     const char = {
         name: 'Лучник',
         type: 'Bowman',
@@ -11,7 +11,22 @@ test('chaking team', () => {
     }
     const team = new Team();
     team.add(char);
-    const iterator = team.iterator();
+    const iterator = team[Symbol.iterator]();
     expect(iterator.next()).toEqual({name: 'Лучник', type: 'Bowman', health: 50, level: 1, attack: 40, defence: 10});
+});
+
+test('chacking team with second next', () => {
+    const char = {
+        name: 'Лучник',
+        type: 'Bowman',
+        health: 50,
+        level: 1,
+        attack: 40,
+        defence: 10
+    }
+    const team = new Team();
+    team.add(char);
+    const iterator = team[Symbol.iterator]();
+    iterator.next();
     expect(iterator.next()).toEqual({value: undefined, done: true});
 });
