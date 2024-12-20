@@ -13,7 +13,10 @@ export class Team {
         return {
             next: () => {
                 if(index < this.members.length){
-                return this.members[index++];
+                    return{
+                        value: this.members[index++],
+                        done: false,
+                    }
                 }
                 return {
                     value: undefined,
